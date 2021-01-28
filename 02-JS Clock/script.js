@@ -9,8 +9,8 @@ function timeSet(){
         minutes = time.getMinutes(),
         hour = time.getHours(), 
         secDeg = ((seconds / 60) * 360) + 90,
-        minDeg = ((minutes / 60) * 360) + 90,
-        hourDeg = ((hour / 60) * 360) + 90,
+        minDeg = ((minutes / 60) * 360) + ((seconds/60)*6) + 90,
+        hourDeg = ((hour / 12) * 360)  + ((minutes/60)*30) + 90,
         sound = document.querySelector('.sound');
         sound.currentTime = 0;
         sound.play();
