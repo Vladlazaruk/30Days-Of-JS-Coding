@@ -66,7 +66,26 @@ html {
     flex-wrap: wrap;
     background: rgba(0,0,0,0.1);
   }
+
+  .player__full-screen {
+    max-width: 50px;
+    max-height: 50px;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+  }
+
+
+  .player__full-screen img{
+    object-fit: cover;
+    max-width: 40px;
+    max-height: 20px;
+  }
   
+  .player__full-screen:hover{
+    transform: scale(1.1);
+  }
+
   .player:hover .player__controls {
     transform: translateY(0);
   }
@@ -96,6 +115,7 @@ html {
     flex: 0;
     flex-basis: 50%;
   }
+
   
   
   
