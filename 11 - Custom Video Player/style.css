@@ -72,6 +72,7 @@ html {
     max-height: 50px;
     background: rgba(0, 0, 0, 0);
     border: none;
+    outline: 0;
     cursor: pointer;
   }
 
@@ -113,7 +114,7 @@ html {
     width: 50%;
     background: #ffc600;
     flex: 0;
-    flex-basis: 50%;
+    flex-basis: 0%;
   }
 
   

@@ -37,8 +37,15 @@ function scrub(e){
 }
 
 function fullScreen(){
-    console.log(window.offsetWidth);
+    if (player.requestFullscreen) {
+        player.requestFullscreen();
+      } else if (player.webkitRequestFullscreen) { /* Safari */
+        player.webkitRequestFullscreen();
+      } else if (player.msRequestFullscreen) { /* IE11 */
+        player.msRequestFullscreen();
+      }      
 }
+
 
 video.addEventListener('click', togglePlay);
 video.addEventListener('timeupdate', handleProgress);
@@ -54,3 +61,4 @@ ranges.forEach(item =>{
 });
 progress.addEventListener('click', scrub);
 full.addEventListener('click', fullScreen);
+
