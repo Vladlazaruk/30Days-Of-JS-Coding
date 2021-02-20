@@ -15,5 +15,5 @@ divs.forEach(div => div.addEventListener('click', logText, {
 button.addEventListener('click', () => {
   console.log('Click!!!');
 }, {
-  once: true
+  once: true //it will work once, and after will remove the eventlistener
 });
