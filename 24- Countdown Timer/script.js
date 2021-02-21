@@ -1,30 +1,52 @@
-const slider = document.querySelector('.items');
-let isDown = false;
-let startX;
-let scrollLeft;
+let countdown;
+const timerDisplay = document.querySelector('.display__time-left');
+const endTime = document.querySelector('.display__end-time');
+const buttons = document.querySelectorAll('[data-time]');
 
+function timer(seconds){ 
+    clearInterval(countdown);
+    const now = Date.now();
+    const then = now + seconds * 1000;
+    displayTimeLeft(seconds);
+    displayEndTime(then);
 
-slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.classList.add('active');
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
+    countdown =  setInterval(() => {
+        const secondsToLeft = Math.round((then - Date.now()) / 1000);
+        if(secondsToLeft < 0){
+            clearInterval(countdown);
+            return;
+        }
+        displayTimeLeft(secondsToLeft);
+    },1000);
+}
+
+function displayTimeLeft (seconds) {
+    const min = Math.floor(seconds / 60);
+    const remainderSeconds = seconds % 60;
+    const display = `${min}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
+
+    document.title = display;
+    timerDisplay.textContent = display;
+}
+
+function displayEndTime(timestamp) {
+    const end = new Date(timestamp);
+    const hour = end.getHours();
+    const minutes = end.getMinutes();
+    endTime.textContent = `Be Back At ${hour}:${minutes < 10 ? '0' : ''}${minutes}`;
+}
+
+function startTimer() {
+   const seconds =  parseInt(this.dataset.time);
+   timer(seconds);
+}
+
+buttons.forEach(btn => {
+    btn.addEventListener('click', startTimer);
 });
-
-slider.addEventListener('mouseleave', () => {
-     isDown = false;
-     slider.classList.remove('active');
-});
-
-slider.addEventListener('mouseup', () => {
-    isDown = false;
-    slider.classList.remove('active');
-});
-
-slider.addEventListener('mousemove', (e) => {
-    if(!isDown) return;
+document.customForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 3;
-    slider.scrollLeft =scrollLeft - walk;
+    const mins = this.minutes.value;
+    timer(mins * 60);
+    this.reset();
 });

@@ -2,38 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Click and Drag</title>
+  <title>CCountdown Timer</title>
+  <link href='https://fonts.googleapis.com/css?family=Inconsolata' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="items">
-    <div class="item item1">01</div>
-    <div class="item item2">02</div>
-    <div class="item item3">03</div>
-    <div class="item item4">04</div>
-    <div class="item item5">05</div>
-    <div class="item item6">06</div>
-    <div class="item item7">07</div>
-    <div class="item item8">08</div>
-    <div class="item item9">09</div>
-    <div class="item item10">10</div>
-    <div class="item item11">11</div>
-    <div class="item item12">12</div>
-    <div class="item item13">13</div>
-    <div class="item item14">14</div>
-    <div class="item item15">15</div>
-    <div class="item item16">16</div>
-    <div class="item item17">17</div>
-    <div class="item item18">18</div>
-    <div class="item item19">19</div>
-    <div class="item item20">20</div>
-    <div class="item item21">21</div>
-    <div class="item item22">22</div>
-    <div class="item item23">23</div>
-    <div class="item item24">24</div>
-    <div class="item item25">25</div>
+  <div class="timer">
+    <div class="timer__controls">
+      <button data-time="20" class="timer__button">20 Secs</button>
+      <button data-time="300" class="timer__button">Work 5</button>
+      <button data-time="900" class="timer__button">Quick 15</button>
+      <button data-time="1200" class="timer__button">Snack 20</button>
+      <button data-time="3600" class="timer__button">Lunch Break</button>
+      <form name="customForm" id="custom">
+        <input type="text" name="minutes" placeholder="Enter Minutes">
+      </form>
+    </div>
+    <div class="display">
+      <h1 class="display__time-left"></h1>
+      <p class="display__end-time"></p>
+    </div>
   </div>
-
 
 <script src="script.js"></script>
 
